@@ -32,6 +32,7 @@ It should not be an Ontoology documentation URL such as `https://ontoology.linke
 The namespace migration affects more than the ontology file. At minimum, the following repository components must be updated in one coordinated release:
 
 - `ontology/daimo.ttl`
+- `ontology/daimo.owl`
 - `shapes/daimo.shacl.ttl`
 - `examples/daimo-example.ttl`
 - `queries/`

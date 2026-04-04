@@ -52,7 +52,8 @@ Before pushing the repository to GitHub:
 
 - make sure the repository is public-ready
 - keep the current PURL namespace unchanged
-- keep the ontology in Turtle in the default branch
+- keep the ontology in Turtle and RDF/XML in the default branch
+- make sure both ontology serializations stay synchronized
 - keep the root `README.md` complete and readable
 - make sure the ontology metadata includes title, description, creators, version information, and preferred namespace annotations
 - run `python scripts/validate.py`

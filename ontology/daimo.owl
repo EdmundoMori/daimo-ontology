@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:vann="http://purl.org/vocab/vann/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:mod="https://w3id.org/mod#"
+>
+  <owl:ObjectProperty rdf:about="http://purl.org/pionera/daimo#hasIOContract">
+    <rdfs:domain rdf:resource="http://purl.org/pionera/daimo#Model"/>
+    <rdfs:range rdf:resource="http://purl.org/pionera/daimo#IOContract"/>
+    <rdfs:label>has IO contract</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.w3.org/ns/mls#hasQuality">
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/mls#HyperParameter"/>
+    <rdfs:range rdf:resource="http://w3id.org/mlso/HyperParameterCharacteristic"/>
+    <rdfs:label>has quality</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.org/pionera/daimo#framework">
+    <rdfs:domain rdf:resource="http://purl.org/pionera/daimo#RuntimeProfile"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label>framework</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:ObjectProperty rdf:about="http://purl.org/dc/terms/creator">
+    <rdfs:label>creator</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.w3.org/ns/mls#SourceCode">
+    <rdfs:domain rdf:resource="https://w3id.org/okn/o/sd/Software"/>
+    <rdfs:range rdf:resource="https://w3id.org/okn/o/sd/SourceCode"/>
+    <rdfs:label>source code</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.org/pionera/daimo#outputFormat">
+    <rdfs:domain rdf:resource="http://purl.org/pionera/daimo#IOContract"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label>output format</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:ObjectProperty rdf:about="http://www.w3.org/ns/odrl/2/obligation">
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/odrl/2/Agreement"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/odrl/2/Offer"/>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/odrl/2/Rule"/>
+    <rdfs:label>obligation</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.org/pionera/daimo#task">
+    <rdfs:domain rdf:resource="http://purl.org/pionera/daimo#Model"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label>task</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.org/pionera/daimo#authenticationMethod">
+    <rdfs:domain rdf:resource="http://purl.org/pionera/daimo#IOContract"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label>authentication method</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:ObjectProperty rdf:about="http://www.w3.org/ns/mls#realizes">
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/mls#Run"/>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/mls#Algorithm"/>
+    <rdfs:label>realizes</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.org/pionera/daimo#randomSeed">
+    <rdfs:domain rdf:resource="http://purl.org/pionera/daimo#EvaluationContext"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:label>random seed</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:ObjectProperty rdf:about="http://www.w3.org/ns/mls#hasOutput">
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/mls#Run"/>
+    <rdfs:label>has output</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:Class rdf:about="http://www.w3.org/ns/odrl/2/Duty">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/odrl/2/Rule"/>
+    <rdfs:label>Duty</rdfs:label>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://purl.org/pionera/daimo#hasReproducibilityArtifact">
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/mls#ModelEvaluation"/>
+    <rdfs:range rdf:resource="http://purl.org/pionera/daimo#ReproducibilityArtifact"/>
+    <rdfs:label>has reproducibility artifact</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.org/pionera/daimo#hardwareRequirement">
+    <rdfs:domain rdf:resource="http://purl.org/pionera/daimo#RuntimeProfile"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label>hardware requirement</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:ObjectProperty rdf:about="http://www.w3.org/ns/prov#wasAssociatedWith">
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/mls#Run"/>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <rdfs:label>was associated with</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.w3.org/ns/dcat#distribution">
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/dcat#Distribution"/>
+    <rdfs:label>distribution</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:Ontology rdf:about="http://purl.org/pionera/daimo#">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:label xml:lang="en">DAIMO ontology</rdfs:label>
+    <rdfs:comment xml:lang="en">Ontology for representing AI models as governed assets in data spaces.</rdfs:comment>
+    <dcterms:title xml:lang="en">DAIMO: An ontology for managing AI models in data spaces</dcterms:title>
+    <dcterms:description xml:lang="en">DAIMO models AI models as governed assets in data spaces and connects publication metadata, policy constraints, invocation contracts, runtime requirements, execution traces, evaluation contexts, audit evidence, and reproducibility evidence.</dcterms:description>
+    <dcterms:creator>
+      <owl:NamedIndividual rdf:about="http://purl.org/pionera/daimo#Edmundo">
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+        <foaf:mbox rdf:resource="mailto:edmundo.mori.orrillo@upm.es"/>
+        <foaf:name>Edmundo de Elvira Mori Orrillo</foaf:name>
+      </owl:NamedIndividual>
+    </dcterms:creator>
+    <dcterms:creator>
+      <owl:NamedIndividual rdf:about="http://purl.org/pionera/daimo#Jiayun">
+        <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+        <foaf:mbox rdf:resource="mailto:jiayun.liu@upm.es"/>
+        <foaf:name>Jiayun Liu</foaf:name>
+      </owl:NamedIndividual>
+    </dcterms:creator>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-04-03</dcterms:issued>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-04-04</dcterms:modified>
+    <owl:versionIRI rdf:resource="http://purl.org/pionera/daimo/1.0.0"/>
+    <owl:versionInfo>1.0.0</owl:versionInfo>
+    <vann:preferredNamespacePrefix>daimo</vann:preferredNamespacePrefix>
+    <vann:preferredNamespaceUri>http://purl.org/pionera/daimo#</vann:preferredNamespaceUri>
+    <mod:createdWith rdf:resource="https://chowlk.linkeddata.es/"/>
+  </owl:Ontology>
+  <owl:Class rdf:about="http://www.w3.org/ns/odrl/2/Prohibition">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/odrl/2/Rule"/>
+    <rdfs:label>Prohibition</rdfs:label>
+  </owl:Class>
+  <owl:DatatypeProperty rdf:about="http://purl.org/pionera/daimo#evaluationProtocol">
+    <rdfs:domain rdf:resource="http://purl.org/pionera/daimo#EvaluationContext"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label>evaluation protocol</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.org/pionera/daimo#evaluationDatasetVersion">
+    <rdfs:domain rdf:resource="http://purl.org/pionera/daimo#EvaluationContext"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label>evaluation dataset version</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:Class rdf:about="http://www.w3.org/ns/mls#EvaluationSpecification">
+    <rdfs:label>Evaluation Specification</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="https://w3id.org/okn/o/sd/SoftwareConfiguration">
+    <rdfs:subClassOf rdf:resource="https://w3id.org/okn/o/sd/Software"/>
+    <rdfs:label>Software Configuration</rdfs:label>
+  </owl:Class>
+  <owl:DatatypeProperty rdf:about="http://purl.org/pionera/daimo#serviceEndpoint">
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#DataService"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+    <rdfs:label>service endpoint</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/prov#startedAtTime">
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/mls#Run"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <rdfs:label>started at time</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.org/pionera/daimo#artifactLocation">
+    <rdfs:domain rdf:resource="http://purl.org/pionera/daimo#Artifact"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+    <rdfs:label>artifact location</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:ObjectProperty rdf:about="http://www.w3.org/ns/odrl/2/prohibition">
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/odrl/2/Agreement"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/odrl/2/Offer"/>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/odrl/2/Rule"/>
+    <rdfs:label>prohibition</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.org/pionera/daimo#runIdentifier">
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/mls#Run"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label>run identifier</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:Class rdf:about="http://www.w3.org/ns/mls#EvaluationProcedure">
+    <rdfs:label>Evaluation Procedure</rdfs:label>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://www.w3.org/ns/odrl/2/assigneeOf">
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/odrl/2/Party"/>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/odrl/2/Offer"/>
+    <rdfs:label>assignee of</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.w3.org/ns/mls#implements">
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/mls#Implementation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/mls#Algorithm"/>
+    <rdfs:label>implements</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.org/pionera/daimo#hasImplementation">
+    <rdfs:domain rdf:resource="http://purl.org/pionera/daimo#Model"/>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/mls#Implementation"/>
+    <rdfs:label>has implementation</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.org/pionera/daimo#hasEvaluationContext">
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/mls#ModelEvaluation"/>
+    <rdfs:range rdf:resource="http://purl.org/pionera/daimo#EvaluationContext"/>
+    <rdfs:label>has evaluation context</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.w3.org/ns/dcat#accessService">
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#Distribution"/>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/dcat#DataService"/>
+    <rdfs:label>access service</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.w3.org/ns/mls#hasHyperParameter">
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/mls#Implementation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/mls#HyperParameter"/>
+    <rdfs:label>has hyper parameter</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/prov#endedAtTime">
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/mls#Run"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <rdfs:label>ended at time</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.org/pionera/daimo#inputFormat">
+    <rdfs:domain rdf:resource="http://purl.org/pionera/daimo#IOContract"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label>input format</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:ObjectProperty rdf:about="http://purl.org/pionera/daimo#hasEvaluation">
+    <rdfs:domain rdf:resource="http://purl.org/pionera/daimo#Model"/>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/mls#ModelEvaluation"/>
+    <rdfs:label>has evaluation</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.org/pionera/daimo#artifactKind">
+    <rdfs:domain rdf:resource="http://purl.org/pionera/daimo#Artifact"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label>artifact kind</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.org/pionera/daimo#runStatus">
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/mls#Run"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label>run status</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:ObjectProperty rdf:about="http://purl.org/pionera/daimo#hasAuditArtifact">
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/mls#Run"/>
+    <rdfs:range rdf:resource="http://purl.org/pionera/daimo#AuditArtifact"/>
+    <rdfs:label>has audit artifact</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.w3.org/ns/prov#wasDerivedFrom">
+    <rdfs:domain rdf:resource="http://purl.org/pionera/daimo#Model"/>
+    <rdfs:range rdf:resource="http://purl.org/pionera/daimo#Model"/>
+    <rdfs:label>was derived from</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:AnnotationProperty rdf:about="http://xmlns.com/foaf/0.1/name"/>
+  <owl:DatatypeProperty rdf:about="http://purl.org/pionera/daimo#artifactChecksum">
+    <rdfs:domain rdf:resource="http://purl.org/pionera/daimo#Artifact"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label>artifact checksum</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:ObjectProperty rdf:about="http://www.w3.org/ns/dcat#servesDataset">
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dcat#DataService"/>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <rdfs:label>serves dataset</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.w3.org/ns/odrl/2/target">
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/odrl/2/Rule"/>
+    <rdfs:range rdf:resource="http://purl.org/pionera/daimo#Model"/>
+    <rdfs:label>target</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.w3.org/ns/odrl/2/permission">
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/odrl/2/Agreement"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/odrl/2/Offer"/>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/odrl/2/Rule"/>
+    <rdfs:label>permission</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.w3.org/ns/mls#hasPart">
+    <rdfs:label>has part</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:AnnotationProperty rdf:about="https://w3id.org/mod#createdWith"/>
+  <owl:ObjectProperty rdf:about="http://www.w3.org/ns/mls#executes">
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/mls#Run"/>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/mls#Implementation"/>
+    <rdfs:label>executes</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.org/pionera/daimo#runPurpose">
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/mls#Run"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label>run purpose</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.org/pionera/daimo#evaluationDataset">
+    <rdfs:domain rdf:resource="http://purl.org/pionera/daimo#EvaluationContext"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label>evaluation dataset</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.org/pionera/daimo#applicationDomain">
+    <rdfs:domain rdf:resource="http://purl.org/pionera/daimo#Model"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label>application domain</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.org/pionera/daimo#metricValue">
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/mls#ModelEvaluation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    <rdfs:label>metric value</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:ObjectProperty rdf:about="http://www.w3.org/ns/odrl/2/hasPolicy">
+    <rdfs:domain rdf:resource="http://purl.org/pionera/daimo#Model"/>
+    <rdfs:label>has policy</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:Class rdf:about="http://www.w3.org/ns/odrl/2/Permission">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/odrl/2/Rule"/>
+    <rdfs:label>Permission</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3.org/ns/mls#HyperParameterSetting">
+    <rdfs:label>Hyper Parameter Setting</rdfs:label>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://www.w3.org/ns/odrl/2/assignerOf">
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/odrl/2/Party"/>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/odrl/2/Offer"/>
+    <rdfs:label>assigner of</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.org/pionera/daimo#hasRuntimeProfile">
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/mls#Implementation"/>
+    <rdfs:range rdf:resource="http://purl.org/pionera/daimo#RuntimeProfile"/>
+    <rdfs:label>has runtime profile</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:AnnotationProperty rdf:about="http://xmlns.com/foaf/0.1/mbox"/>
+  <owl:ObjectProperty rdf:about="http://www.w3.org/ns/mls#specifiedBy">
+    <rdfs:label>specified by</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:Class rdf:about="http://www.w3.org/ns/mls#EvaluationMeasure">
+    <rdfs:label>Evaluation Measure</rdfs:label>
+  </owl:Class>
+  <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri"/>
+  <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix"/>
+  <owl:Class rdf:about="http://purl.org/pionera/daimo#EvaluationContext">
+    <rdfs:label>Evaluation Context</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Agent">
+    <rdfs:label>Agent</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3.org/ns/mls#HyperParameter">
+    <rdfs:label>Hyper Parameter</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3.org/ns/odrl/2/Party">
+    <rdfs:label>Party</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/pionera/daimo#RuntimeProfile">
+    <rdfs:label>Runtime Profile</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3.org/ns/mls#Algorithm">
+    <rdfs:label>Algorithm</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/pionera/daimo#AuditArtifact">
+    <rdfs:subClassOf rdf:resource="http://purl.org/pionera/daimo#Artifact"/>
+    <rdfs:label>Audit Artifact</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/pionera/daimo#IOContract">
+    <rdfs:label>IO Contract</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3.org/ns/odrl/2/Rule">
+    <rdfs:label>Rule</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3.org/ns/mls#ModelEvaluation">
+    <rdfs:label>Model Evaluation</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3.org/ns/dcat#Dataset">
+    <rdfs:label>Dataset</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/pionera/daimo#ReproducibilityArtifact">
+    <rdfs:subClassOf rdf:resource="http://purl.org/pionera/daimo#Artifact"/>
+    <rdfs:label>Reproducibility Artifact</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/pionera/daimo#Artifact">
+    <rdfs:label>Artifact</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/pionera/daimo#Model">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/dcat#Dataset"/>
+    <rdfs:label>Model</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="https://w3id.org/okn/o/sd/SourceCode">
+    <rdfs:label>Source Code</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3.org/ns/mls#Implementation">
+    <rdfs:label>Implementation</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="https://w3id.org/okn/o/sd/Software">
+    <rdfs:label>Software</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3.org/ns/mls#Run">
+    <rdfs:label>Run</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3.org/ns/odrl/2/Agreement">
+    <rdfs:label>Agreement</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3.org/ns/dcat#DataService">
+    <rdfs:label>Data Service</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://w3id.org/mlso/HyperParameterCharacteristic">
+    <rdfs:label>Hyper Parameter Characteristic</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3.org/ns/odrl/2/Offer">
+    <rdfs:label>Offer</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Person"/>
+  <owl:Class rdf:about="http://www.w3.org/ns/dcat#Distribution">
+    <rdfs:label>Distribution</rdfs:label>
+  </owl:Class>
+</rdf:RDF>

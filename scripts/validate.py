@@ -7,12 +7,14 @@ from pathlib import Path
 from typing import Any
 
 from pyshacl import validate
+from rdflib.compare import to_isomorphic
 from rdflib import Graph, Namespace, URIRef
 from rdflib.namespace import DCTERMS, OWL, RDF
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 ONTOLOGY_TTL = REPO_ROOT / "ontology" / "daimo.ttl"
+ONTOLOGY_OWL = REPO_ROOT / "ontology" / "daimo.owl"
 SHAPES_TTL = REPO_ROOT / "shapes" / "daimo.shacl.ttl"
 EXAMPLE_TTL = REPO_ROOT / "examples" / "daimo-example.ttl"
 SPARQL_DIR = REPO_ROOT / "queries"
@@ -142,6 +144,15 @@ def run_namespace_consistency_checks() -> tuple[bool, list[str]]:
     return not failures, failures
 
 
+def run_serialization_consistency_checks(ontology_ttl_graph: Graph, ontology_owl_graph: Graph) -> tuple[bool, list[str]]:
+    failures: list[str] = []
+
+    if not to_isomorphic(ontology_ttl_graph) == to_isomorphic(ontology_owl_graph):
+        failures.append("Ontology Turtle and RDF/XML serializations are not graph-equivalent")
+
+    return not failures, failures
+
+
 def main() -> int:
     failures: list[str] = []
 
@@ -154,6 +165,13 @@ def main() -> int:
     except Exception as exc:  # pragma: no cover
         failures.append(f"Failed to parse ontology TTL: {exc}")
         ontology_graph = None
+
+    try:
+        ontology_owl_graph = parse_graph(ONTOLOGY_OWL, "xml")
+        print(f"[OK] Parsed ontology RDF/XML: {ONTOLOGY_OWL}")
+    except Exception as exc:  # pragma: no cover
+        failures.append(f"Failed to parse ontology RDF/XML: {exc}")
+        ontology_owl_graph = None
 
     try:
         shapes_graph = parse_graph(SHAPES_TTL, "turtle")
@@ -194,6 +212,16 @@ def main() -> int:
         else:
             failures.extend(metadata_failures)
             print("[FAIL] Ontology metadata checks failed")
+
+    if ontology_graph is not None and ontology_owl_graph is not None:
+        serialization_conforms, serialization_failures = run_serialization_consistency_checks(
+            ontology_graph, ontology_owl_graph
+        )
+        if serialization_conforms:
+            print("[OK] Turtle and RDF/XML ontology serializations are graph-equivalent")
+        else:
+            failures.extend(serialization_failures)
+            print("[FAIL] Ontology serialization consistency checks failed")
 
     try:
         namespace_conforms, namespace_failures = run_namespace_consistency_checks()
