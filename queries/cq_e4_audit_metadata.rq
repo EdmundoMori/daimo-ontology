@@ -1,0 +1,20 @@
+PREFIX daimo: <http://purl.org/pionera/daimo#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX mls: <http://www.w3.org/ns/mls#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+
+SELECT ?run ?runId ?actorName ?purpose ?startedAt ?endedAt ?status ?artifactKind ?artifactLocation
+WHERE {
+  ?run a mls:Run ;
+       daimo:runIdentifier ?runId ;
+       daimo:runPurpose ?purpose ;
+       daimo:runStatus ?status ;
+       prov:wasAssociatedWith ?actor ;
+       prov:startedAtTime ?startedAt ;
+       prov:endedAtTime ?endedAt ;
+       daimo:hasAuditArtifact ?artifact .
+  OPTIONAL { ?actor foaf:name ?actorName . }
+  ?artifact daimo:artifactKind ?artifactKind ;
+            daimo:artifactLocation ?artifactLocation .
+}
+ORDER BY ?run

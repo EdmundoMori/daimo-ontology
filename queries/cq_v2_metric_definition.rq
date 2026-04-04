@@ -1,0 +1,13 @@
+PREFIX daimo: <http://purl.org/pionera/daimo#>
+PREFIX mls: <http://www.w3.org/ns/mls#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?model ?metricLabel ?metricValue
+WHERE {
+  ?model a daimo:Model ;
+         daimo:hasEvaluation ?evaluation .
+  ?evaluation mls:specifiedBy ?metric ;
+              daimo:metricValue ?metricValue .
+  OPTIONAL { ?metric rdfs:label ?metricLabel . }
+}
+ORDER BY DESC(?metricValue)

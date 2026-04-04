@@ -1,0 +1,11 @@
+PREFIX daimo: <http://purl.org/pionera/daimo#>
+
+SELECT ?model ?implementation ?framework ?hardware
+WHERE {
+  ?model a daimo:Model ;
+         daimo:hasImplementation ?implementation .
+  ?implementation daimo:hasRuntimeProfile ?profile .
+  ?profile daimo:framework ?framework ;
+           daimo:hardwareRequirement ?hardware .
+}
+ORDER BY ?model

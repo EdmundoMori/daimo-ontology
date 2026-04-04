@@ -1,0 +1,12 @@
+PREFIX daimo: <http://purl.org/pionera/daimo#>
+
+SELECT ?model ?evaluation ?artifactKind ?artifactLocation ?checksum
+WHERE {
+  ?model a daimo:Model ;
+         daimo:hasEvaluation ?evaluation .
+  ?evaluation daimo:hasReproducibilityArtifact ?artifact .
+  ?artifact daimo:artifactKind ?artifactKind ;
+            daimo:artifactLocation ?artifactLocation ;
+            daimo:artifactChecksum ?checksum .
+}
+ORDER BY ?model ?artifactKind

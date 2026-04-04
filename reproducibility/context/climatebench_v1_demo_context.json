@@ -1,0 +1,8 @@
+{
+  "evaluationDataset": "ClimateBench-v1",
+  "evaluationDatasetVersion": "2026.1",
+  "evaluationProtocol": "Stratified holdout 80/20 with fixed seed 42",
+  "randomSeed": 42,
+  "sampleCount": 100,
+  "metric": "Accuracy"
+}

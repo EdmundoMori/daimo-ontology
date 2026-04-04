@@ -1,0 +1,12 @@
+PREFIX daimo: <http://purl.org/pionera/daimo#>
+
+SELECT ?model ?metricValue
+WHERE {
+  ?model a daimo:Model ;
+         daimo:hasEvaluation ?evaluation .
+  ?evaluation daimo:metricValue ?metricValue ;
+              daimo:hasEvaluationContext ?context .
+  ?context daimo:evaluationDataset "ClimateBench-v1" .
+  FILTER(?metricValue >= 0.85)
+}
+ORDER BY DESC(?metricValue)

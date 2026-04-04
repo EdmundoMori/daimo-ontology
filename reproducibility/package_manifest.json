@@ -1,0 +1,72 @@
+{
+  "evaluation_context": {
+    "evaluationDataset": "ClimateBench-v1",
+    "evaluationDatasetVersion": "2026.1",
+    "evaluationProtocol": "Stratified holdout 80/20 with fixed seed 42",
+    "randomSeed": 42,
+    "sampleCount": 100,
+    "metric": "Accuracy"
+  },
+  "executed_notebooks": [
+    "executed/model1-eval.executed.ipynb",
+    "executed/model2-eval.executed.ipynb"
+  ],
+  "models": [
+    {
+      "model": "Model1",
+      "expected_accuracy": "0.89",
+      "observed_accuracy": "0.89",
+      "run_id": "run-2026-03-15-model1-001"
+    },
+    {
+      "model": "Model2",
+      "expected_accuracy": "0.82",
+      "observed_accuracy": "0.82",
+      "run_id": "run-2026-03-15-model2-001"
+    }
+  ],
+  "artifacts": [
+    {
+      "model": "Model1",
+      "artifact_type": "notebook",
+      "uri": "https://pionera.org/repro/model1-eval.ipynb",
+      "local_path": "notebooks/model1-eval.ipynb",
+      "sha256": "91a49b17c479156975bcfda0cc59ceb61d3cd76a6db33f42456382761afa97a2"
+    },
+    {
+      "model": "Model1",
+      "artifact_type": "results",
+      "uri": "https://pionera.org/repro/model1-results.csv",
+      "local_path": "results/model1-results.csv",
+      "sha256": "f71b4707ba7ec7003ca30af0c40ead120d5ad1dc276241a9871d9ec5a4e7be23"
+    },
+    {
+      "model": "Model1",
+      "artifact_type": "audit-log",
+      "uri": "https://pionera.org/audit/model1-run-001.jsonl",
+      "local_path": "audit/model1-run-001.jsonl",
+      "sha256": "73315211076b3f1a7c7c4980d3ac57ba6a1a893fd99cc178a7874653117efb82"
+    },
+    {
+      "model": "Model2",
+      "artifact_type": "notebook",
+      "uri": "https://pionera.org/repro/model2-eval.ipynb",
+      "local_path": "notebooks/model2-eval.ipynb",
+      "sha256": "225728ceab763c66384e3d0db00ea6145669c3670e41c5dbed2b5e66348d0f87"
+    },
+    {
+      "model": "Model2",
+      "artifact_type": "results",
+      "uri": "https://pionera.org/repro/model2-results.csv",
+      "local_path": "results/model2-results.csv",
+      "sha256": "a9ccd6249ae80eda96aa4b5db995b8d085e943aa08b48ba1cc827975a5d61d16"
+    },
+    {
+      "model": "Model2",
+      "artifact_type": "audit-log",
+      "uri": "https://pionera.org/audit/model2-run-001.jsonl",
+      "local_path": "audit/model2-run-001.jsonl",
+      "sha256": "f03b46d94cc79cd5eeb5d2bb14a22d54ac2a9f9a32403932d65d49a2b073c90a"
+    }
+  ]
+}

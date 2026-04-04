@@ -1,0 +1,241 @@
+@prefix dcat:   <http://www.w3.org/ns/dcat#> .
+@prefix dcterms:<http://purl.org/dc/terms/> .
+@prefix ex:     <http://pionera.org/example#> .
+@prefix foaf:   <http://xmlns.com/foaf/0.1/> .
+@prefix daimo:  <http://purl.org/pionera/daimo#> .
+@prefix mls:    <http://www.w3.org/ns/mls#> .
+@prefix odrl:   <http://www.w3.org/ns/odrl/2/> .
+@prefix prov:   <http://www.w3.org/ns/prov#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+
+########################
+# Modelos de ejemplo
+########################
+
+# Un modelo base del que derivará el principal. Aunque actúa como
+# antecedente de procedencia, también debe cumplir la completitud mínima
+# exigida por los shapes para un modelo publicado.
+ex:Model0 a daimo:Model ;
+    dcat:version       "0.9.0" ;
+    dcterms:license    "apache-2.0" ;
+    daimo:task         "Flood risk prediction" ;
+    daimo:applicationDomain "Climate analytics" ;
+    dcterms:creator     ex:Provider1 ;
+    dcat:distribution   ex:Model0Distribution ;
+    odrl:hasPolicy      ex:Model0Policy ;
+    daimo:hasIOContract ex:Model0IOContract .
+
+# Agente creador del modelo
+ex:Provider1 a foaf:Agent ;
+    foaf:name "Example provider" .
+
+ex:PlatformOperator a foaf:Agent ;
+    foaf:name "PIONERA MLOps operator" .
+
+# Modelo principal
+ex:Model1 a daimo:Model ;
+    dcat:version       "1.0.0" ;
+    dcterms:license    "apache-2.0" ;
+    daimo:task         "Flood risk prediction" ;
+    daimo:applicationDomain "Climate analytics" ;
+    dcterms:creator     ex:Provider1 ;           # quién lo ha creado
+    dcat:distribution   ex:Model1Distribution ;  # cómo se distribuye
+    odrl:hasPolicy      ex:Model1Policy ;        # política asociada
+    prov:wasDerivedFrom ex:Model0 ;              # deriva de otro modelo
+    daimo:hasIOContract ex:Model1IOContract ;
+    daimo:hasImplementation ex:Model1Implementation ;
+    daimo:hasEvaluation ex:Model1Evaluation .
+
+########################
+# Contrato I/O
+########################
+
+ex:Model0IOContract a daimo:IOContract ;
+    daimo:inputFormat "application/json" ;
+    daimo:outputFormat "application/json" ;
+    daimo:authenticationMethod "OAuth2 client credentials" .
+
+ex:Model1IOContract a daimo:IOContract ;
+    daimo:inputFormat "application/json" ;
+    daimo:outputFormat "application/json" ;
+    daimo:authenticationMethod "OAuth2 client credentials" .
+
+########################
+# Distribución y servicio
+########################
+
+ex:Model1Distribution a dcat:Distribution ;
+    dcat:accessService ex:Model1Service .
+
+ex:Model0Distribution a dcat:Distribution ;
+    dcat:accessService ex:Model0Service .
+
+ex:Model1Service a dcat:DataService ;
+    dcat:servesDataset ex:Model1 ;
+    daimo:serviceEndpoint "https://api.pionera.org/models/model1/infer"^^xsd:anyURI .
+
+ex:Model0Service a dcat:DataService ;
+    dcat:servesDataset ex:Model0 ;
+    daimo:serviceEndpoint "https://api.pionera.org/models/model0/infer"^^xsd:anyURI .
+
+########################
+# Implementación y perfil de ejecución
+########################
+
+ex:BinaryClassifier a mls:Algorithm .
+
+ex:Model1Implementation a mls:Implementation ;
+    mls:implements ex:BinaryClassifier ;
+    daimo:hasRuntimeProfile ex:Model1RuntimeProfile .
+
+ex:Model1RuntimeProfile a daimo:RuntimeProfile ;
+    daimo:framework "PyTorch 2.1" ;
+    daimo:hardwareRequirement "1 GPU, 16GB RAM" .
+
+ex:TreeEnsemble a mls:Algorithm .
+
+ex:Model2 a daimo:Model ;
+    dcat:version       "2.1.0" ;
+    dcterms:license    "research-only" ;
+    daimo:task         "Flood risk prediction" ;
+    daimo:applicationDomain "Climate analytics" ;
+    dcterms:creator     ex:Provider1 ;
+    dcat:distribution   ex:Model2Distribution ;
+    odrl:hasPolicy      ex:Model2Policy ;
+    daimo:hasIOContract ex:Model2IOContract ;
+    daimo:hasImplementation ex:Model2Implementation ;
+    daimo:hasEvaluation ex:Model2Evaluation .
+
+ex:Model2IOContract a daimo:IOContract ;
+    daimo:inputFormat "application/json" ;
+    daimo:outputFormat "application/json" ;
+    daimo:authenticationMethod "API key" .
+
+ex:Model2Distribution a dcat:Distribution ;
+    dcat:accessService ex:Model2Service .
+
+ex:Model2Service a dcat:DataService ;
+    dcat:servesDataset ex:Model2 ;
+    daimo:serviceEndpoint "https://api.pionera.org/models/model2/infer"^^xsd:anyURI .
+
+ex:Model2Implementation a mls:Implementation ;
+    mls:implements ex:TreeEnsemble ;
+    daimo:hasRuntimeProfile ex:Model2RuntimeProfile .
+
+ex:Model2RuntimeProfile a daimo:RuntimeProfile ;
+    daimo:framework "XGBoost 2.0" ;
+    daimo:hardwareRequirement "CPU, 8GB RAM" .
+
+########################
+# Ejecución
+########################
+
+ex:Model1Run a mls:Run ;
+    daimo:runIdentifier "run-2026-03-15-model1-001" ;
+    daimo:runPurpose "Nightly benchmark inference on ClimateBench-v1 validation split" ;
+    daimo:runStatus "completed" ;
+    prov:wasAssociatedWith ex:PlatformOperator ;
+    prov:startedAtTime "2026-03-15T10:00:00Z"^^xsd:dateTime ;
+    prov:endedAtTime "2026-03-15T10:12:34Z"^^xsd:dateTime ;
+    daimo:hasAuditArtifact ex:Model1RunLog ;
+    mls:executes ex:Model1Implementation ;
+    mls:realizes ex:BinaryClassifier ;
+    mls:hasOutput ex:Model1Evaluation .
+
+ex:Model2Run a mls:Run ;
+    daimo:runIdentifier "run-2026-03-15-model2-001" ;
+    daimo:runPurpose "Candidate baseline benchmark on ClimateBench-v1 validation split" ;
+    daimo:runStatus "completed" ;
+    prov:wasAssociatedWith ex:PlatformOperator ;
+    prov:startedAtTime "2026-03-15T11:00:00Z"^^xsd:dateTime ;
+    prov:endedAtTime "2026-03-15T11:06:12Z"^^xsd:dateTime ;
+    daimo:hasAuditArtifact ex:Model2RunLog ;
+    mls:executes ex:Model2Implementation ;
+    mls:realizes ex:TreeEnsemble ;
+    mls:hasOutput ex:Model2Evaluation .
+
+ex:Model1RunLog a daimo:AuditArtifact ;
+    daimo:artifactKind "structured log" ;
+    daimo:artifactLocation "https://pionera.org/audit/model1-run-001.jsonl"^^xsd:anyURI ;
+    daimo:artifactChecksum "73315211076b3f1a7c7c4980d3ac57ba6a1a893fd99cc178a7874653117efb82" .
+
+ex:Model2RunLog a daimo:AuditArtifact ;
+    daimo:artifactKind "structured log" ;
+    daimo:artifactLocation "https://pionera.org/audit/model2-run-001.jsonl"^^xsd:anyURI ;
+    daimo:artifactChecksum "f03b46d94cc79cd5eeb5d2bb14a22d54ac2a9f9a32403932d65d49a2b073c90a" .
+
+########################
+# Política ODRL del modelo
+########################
+
+ex:Model1Policy a odrl:Agreement ;
+    odrl:permission ex:Model1Permission .
+
+ex:Model0Policy a odrl:Agreement ;
+    odrl:permission ex:Model0Permission .
+
+ex:Model1Permission a odrl:Permission ;  # subclase de odrl:Rule
+    odrl:target ex:Model1 .
+
+ex:Model0Permission a odrl:Permission ;  # subclase de odrl:Rule
+    odrl:target ex:Model0 .
+
+ex:Model2Policy a odrl:Offer ;
+    odrl:prohibition ex:Model2Prohibition .
+
+ex:Model2Prohibition a odrl:Prohibition ;
+    odrl:target ex:Model2 .
+
+########################
+# Evaluación
+########################
+
+ex:Accuracy a mls:EvaluationMeasure ;
+    rdfs:label "Accuracy" .
+
+ex:Model1Evaluation a mls:ModelEvaluation ;
+    mls:specifiedBy ex:Accuracy ;
+    daimo:metricValue "0.89"^^xsd:decimal ;
+    daimo:hasReproducibilityArtifact ex:Model1EvalNotebook,
+                                     ex:Model1EvalResults ;
+    daimo:hasEvaluationContext ex:Model1EvaluationContext .
+
+ex:Model1EvaluationContext a daimo:EvaluationContext ;
+    daimo:evaluationDataset "ClimateBench-v1" ;
+    daimo:evaluationDatasetVersion "2026.1" ;
+    daimo:randomSeed 42 ;
+    daimo:evaluationProtocol "Stratified holdout 80/20 with fixed seed 42" .
+
+ex:Model2Evaluation a mls:ModelEvaluation ;
+    mls:specifiedBy ex:Accuracy ;
+    daimo:metricValue "0.82"^^xsd:decimal ;
+    daimo:hasReproducibilityArtifact ex:Model2EvalNotebook,
+                                     ex:Model2EvalResults ;
+    daimo:hasEvaluationContext ex:Model2EvaluationContext .
+
+ex:Model2EvaluationContext a daimo:EvaluationContext ;
+    daimo:evaluationDataset "ClimateBench-v1" ;
+    daimo:evaluationDatasetVersion "2026.1" ;
+    daimo:randomSeed 42 ;
+    daimo:evaluationProtocol "Stratified holdout 80/20 with fixed seed 42" .
+
+ex:Model1EvalNotebook a daimo:ReproducibilityArtifact ;
+    daimo:artifactKind "notebook" ;
+    daimo:artifactLocation "https://pionera.org/repro/model1-eval.ipynb"^^xsd:anyURI ;
+    daimo:artifactChecksum "91a49b17c479156975bcfda0cc59ceb61d3cd76a6db33f42456382761afa97a2" .
+
+ex:Model1EvalResults a daimo:ReproducibilityArtifact ;
+    daimo:artifactKind "results table" ;
+    daimo:artifactLocation "https://pionera.org/repro/model1-results.csv"^^xsd:anyURI ;
+    daimo:artifactChecksum "f71b4707ba7ec7003ca30af0c40ead120d5ad1dc276241a9871d9ec5a4e7be23" .
+
+ex:Model2EvalNotebook a daimo:ReproducibilityArtifact ;
+    daimo:artifactKind "notebook" ;
+    daimo:artifactLocation "https://pionera.org/repro/model2-eval.ipynb"^^xsd:anyURI ;
+    daimo:artifactChecksum "225728ceab763c66384e3d0db00ea6145669c3670e41c5dbed2b5e66348d0f87" .
+
+ex:Model2EvalResults a daimo:ReproducibilityArtifact ;
+    daimo:artifactKind "results table" ;
+    daimo:artifactLocation "https://pionera.org/repro/model2-results.csv"^^xsd:anyURI ;
+    daimo:artifactChecksum "a9ccd6249ae80eda96aa4b5db995b8d085e943aa08b48ba1cc827975a5d61d16" .

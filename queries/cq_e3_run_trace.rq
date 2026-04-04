@@ -1,0 +1,15 @@
+PREFIX daimo: <http://purl.org/pionera/daimo#>
+PREFIX mls: <http://www.w3.org/ns/mls#>
+
+SELECT ?run ?model ?implementation ?algorithm ?evaluation ?metricValue
+WHERE {
+  ?run a mls:Run ;
+       mls:executes ?implementation ;
+       mls:realizes ?algorithm ;
+       mls:hasOutput ?evaluation .
+  ?model a daimo:Model ;
+         daimo:hasImplementation ?implementation ;
+         daimo:hasEvaluation ?evaluation .
+  ?evaluation daimo:metricValue ?metricValue .
+}
+ORDER BY ?run

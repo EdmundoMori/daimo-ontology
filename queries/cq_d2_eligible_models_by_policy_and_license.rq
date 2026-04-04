@@ -1,0 +1,16 @@
+PREFIX daimo: <http://purl.org/pionera/daimo#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+
+SELECT ?model ?license
+WHERE {
+  ?model a daimo:Model ;
+         daimo:task "Flood risk prediction" ;
+         daimo:applicationDomain "Climate analytics" ;
+         dcterms:license "apache-2.0" ;
+         odrl:hasPolicy ?policy .
+  OPTIONAL { ?policy odrl:prohibition ?prohibition . }
+  FILTER(!BOUND(?prohibition))
+  BIND("apache-2.0" AS ?license)
+}
+ORDER BY ?model

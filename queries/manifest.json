@@ -1,0 +1,86 @@
+[
+  {
+    "id": "CQ-R1",
+    "file": "cq_r1_model_identity.rq",
+    "description": "Retrieve model identity, version, license and creator.",
+    "min_rows": 3
+  },
+  {
+    "id": "CQ-R2",
+    "file": "cq_r2_model_contract.rq",
+    "description": "Retrieve task, domain and IO contract of each model.",
+    "min_rows": 3
+  },
+  {
+    "id": "CQ-R3",
+    "file": "cq_r3_policy_license.rq",
+    "description": "Retrieve license and policy type for each model.",
+    "min_rows": 3
+  },
+  {
+    "id": "CQ-R5",
+    "file": "cq_r5_runtime_profile.rq",
+    "description": "Retrieve runtime requirements for runnable models.",
+    "min_rows": 2
+  },
+  {
+    "id": "CQ-D1",
+    "file": "cq_d1_discovery_by_task_domain.rq",
+    "description": "Discover models by task and application domain.",
+    "min_rows": 3
+  },
+  {
+    "id": "CQ-D2",
+    "file": "cq_d2_eligible_models_by_policy_and_license.rq",
+    "description": "Select eligible models after policy and license filtering.",
+    "min_rows": 2
+  },
+  {
+    "id": "CQ-D4",
+    "file": "cq_d4_quality_threshold.rq",
+    "description": "Select models above a quality threshold in a fixed evaluation context.",
+    "min_rows": 1
+  },
+  {
+    "id": "CQ-E1",
+    "file": "cq_e1_service_invocation.rq",
+    "description": "Retrieve endpoint, auth and IO contract for invocable models.",
+    "min_rows": 3
+  },
+  {
+    "id": "CQ-E3",
+    "file": "cq_e3_run_trace.rq",
+    "description": "Retrieve execution traces linking runs, implementations and evaluations.",
+    "min_rows": 2
+  },
+  {
+    "id": "CQ-E4",
+    "file": "cq_e4_audit_metadata.rq",
+    "description": "Retrieve audit metadata and artifacts that allow reconstructing a concrete run.",
+    "min_rows": 2
+  },
+  {
+    "id": "CQ-V1",
+    "file": "cq_v1_evaluation_context.rq",
+    "description": "Retrieve dataset, dataset version, protocol and random seed used to evaluate each model.",
+    "min_rows": 2
+  },
+  {
+    "id": "CQ-V2",
+    "file": "cq_v2_metric_definition.rq",
+    "description": "Retrieve evaluation measure and metric value for each evaluated model.",
+    "min_rows": 2
+  },
+  {
+    "id": "CQ-V3",
+    "file": "cq_v3_model_ranking.rq",
+    "description": "Rank models by metric value within a shared evaluation context.",
+    "min_rows": 2
+  },
+  {
+    "id": "CQ-V5",
+    "file": "cq_v5_reproducibility_artifacts.rq",
+    "description": "Retrieve reproducibility artifacts backing each model evaluation.",
+    "min_rows": 4
+  }
+]

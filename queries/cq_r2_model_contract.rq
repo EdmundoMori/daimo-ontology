@@ -1,0 +1,13 @@
+PREFIX daimo: <http://purl.org/pionera/daimo#>
+
+SELECT ?model ?task ?domain ?inputFormat ?outputFormat ?authMethod
+WHERE {
+  ?model a daimo:Model ;
+         daimo:task ?task ;
+         daimo:applicationDomain ?domain ;
+         daimo:hasIOContract ?contract .
+  ?contract daimo:inputFormat ?inputFormat ;
+            daimo:outputFormat ?outputFormat ;
+            daimo:authenticationMethod ?authMethod .
+}
+ORDER BY ?model

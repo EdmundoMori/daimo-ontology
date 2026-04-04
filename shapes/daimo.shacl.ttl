@@ -1,0 +1,620 @@
+@prefix dcat:      <http://www.w3.org/ns/dcat#> .
+@prefix dcterms:   <http://purl.org/dc/terms/> .
+@prefix foaf:      <http://xmlns.com/foaf/0.1/> .
+@prefix daimo:     <http://purl.org/pionera/daimo#> .
+@prefix mls:       <http://www.w3.org/ns/mls#> .
+@prefix mlso:      <http://w3id.org/mlso/> .
+@prefix odrl:      <http://www.w3.org/ns/odrl/2/> .
+@prefix pionera-sh: <https://pionera.org/shapes#> .
+@prefix prov:      <http://www.w3.org/ns/prov#> .
+@prefix rdfs:      <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh:        <http://www.w3.org/ns/shacl#> .
+@prefix xsd:       <http://www.w3.org/2001/XMLSchema#> .
+
+###########
+# NodeShapes
+###########
+
+pionera-sh:DatasetShape
+    a sh:NodeShape ;
+    rdfs:label "Dataset" ;
+    sh:name "Dataset" ;
+    sh:nodeKind sh:IRI ;
+    sh:targetClass dcat:Dataset ;
+    sh:property
+        pionera-sh:creatorProperty,
+        pionera-sh:distributionProperty
+.
+
+pionera-sh:DistributionShape
+    a sh:NodeShape ;
+    rdfs:label "Distribution" ;
+    sh:name "Distribution" ;
+    sh:nodeKind sh:IRI ;
+    sh:targetClass dcat:Distribution ;
+    sh:property
+        pionera-sh:accessServiceProperty
+.
+
+pionera-sh:DataServiceShape
+    a sh:NodeShape ;
+    rdfs:label "Data Service" ;
+    sh:name "Data Service" ;
+    sh:nodeKind sh:IRI ;
+    sh:targetClass dcat:DataService ;
+    sh:property
+        pionera-sh:servesDatasetProperty,
+        pionera-sh:serviceEndpointProperty
+.
+
+pionera-sh:ModelShape
+    a sh:NodeShape ;
+    rdfs:label "Model" ;
+    sh:name "Model" ;
+    sh:nodeKind sh:IRI ;
+    sh:targetClass daimo:Model ;
+    sh:property
+        pionera-sh:versionProperty,
+        pionera-sh:licenseProperty,
+        pionera-sh:taskProperty,
+        pionera-sh:applicationDomainProperty,
+        pionera-sh:creatorProperty,
+        pionera-sh:distributionProperty,
+        pionera-sh:hasPolicyProperty,
+        pionera-sh:hasIOContractProperty,
+        pionera-sh:hasImplementationProperty,
+        pionera-sh:hasEvaluationProperty,
+        pionera-sh:wasDerivedFromProperty
+.
+
+pionera-sh:IOContractShape
+    a sh:NodeShape ;
+    rdfs:label "IO Contract" ;
+    sh:name "IO Contract" ;
+    sh:nodeKind sh:IRI ;
+    sh:targetClass daimo:IOContract ;
+    sh:property
+        pionera-sh:inputFormatProperty,
+        pionera-sh:outputFormatProperty,
+        pionera-sh:authenticationMethodProperty
+.
+
+pionera-sh:AuditArtifactShape
+    a sh:NodeShape ;
+    rdfs:label "Audit Artifact" ;
+    sh:name "Audit Artifact" ;
+    sh:nodeKind sh:IRI ;
+    sh:targetClass daimo:AuditArtifact ;
+    sh:property
+        pionera-sh:artifactKindProperty,
+        pionera-sh:artifactLocationProperty,
+        pionera-sh:artifactChecksumProperty
+.
+
+pionera-sh:RunShape
+    a sh:NodeShape ;
+    rdfs:label "Run" ;
+    sh:name "Run" ;
+    sh:nodeKind sh:IRI ;
+    sh:targetClass mls:Run ;
+    sh:property
+        pionera-sh:runIdentifierProperty,
+        pionera-sh:runPurposeProperty,
+        pionera-sh:runStatusProperty,
+        pionera-sh:startedAtTimeProperty,
+        pionera-sh:endedAtTimeProperty,
+        pionera-sh:wasAssociatedWithProperty,
+        pionera-sh:hasAuditArtifactProperty,
+        pionera-sh:executesProperty,
+        pionera-sh:hasOutputProperty,
+        pionera-sh:realizesProperty
+.
+
+pionera-sh:ImplementationShape
+    a sh:NodeShape ;
+    rdfs:label "Implementation" ;
+    sh:name "Implementation" ;
+    sh:nodeKind sh:IRI ;
+    sh:targetClass mls:Implementation ;
+    sh:property
+        pionera-sh:hasRuntimeProfileProperty,
+        pionera-sh:hasHyperParameterProperty,
+        pionera-sh:hasPartProperty,
+        pionera-sh:implementsProperty
+.
+
+pionera-sh:RuntimeProfileShape
+    a sh:NodeShape ;
+    rdfs:label "Runtime Profile" ;
+    sh:name "Runtime Profile" ;
+    sh:nodeKind sh:IRI ;
+    sh:targetClass daimo:RuntimeProfile ;
+    sh:property
+        pionera-sh:frameworkProperty,
+        pionera-sh:hardwareRequirementProperty
+.
+
+pionera-sh:HyperParameterShape
+    a sh:NodeShape ;
+    rdfs:label "HyperParameter" ;
+    sh:name "HyperParameter" ;
+    sh:nodeKind sh:IRI ;
+    sh:targetClass mls:HyperParameter ;
+    sh:property
+        pionera-sh:hasQualityProperty
+.
+
+pionera-sh:HyperParameterSettingShape
+    a sh:NodeShape ;
+    rdfs:label "HyperParameterSetting" ;
+    sh:name "HyperParameterSetting" ;
+    sh:nodeKind sh:IRI ;
+    sh:targetClass mls:HyperParameterSetting ;
+    sh:property
+        pionera-sh:specifiedByProperty
+.
+
+pionera-sh:ModelEvaluationShape
+    a sh:NodeShape ;
+    rdfs:label "ModelEvaluation" ;
+    sh:name "ModelEvaluation" ;
+    sh:nodeKind sh:IRI ;
+    sh:targetClass mls:ModelEvaluation ;
+    sh:property
+        pionera-sh:metricValueProperty,
+        pionera-sh:hasEvaluationContextProperty,
+        pionera-sh:hasReproducibilityArtifactProperty,
+        pionera-sh:specifiedByProperty
+.
+
+pionera-sh:EvaluationContextShape
+    a sh:NodeShape ;
+    rdfs:label "Evaluation Context" ;
+    sh:name "Evaluation Context" ;
+    sh:nodeKind sh:IRI ;
+    sh:targetClass daimo:EvaluationContext ;
+    sh:property
+        pionera-sh:evaluationDatasetProperty,
+        pionera-sh:evaluationDatasetVersionProperty,
+        pionera-sh:randomSeedProperty,
+        pionera-sh:evaluationProtocolProperty
+.
+
+pionera-sh:ReproducibilityArtifactShape
+    a sh:NodeShape ;
+    rdfs:label "Reproducibility Artifact" ;
+    sh:name "Reproducibility Artifact" ;
+    sh:nodeKind sh:IRI ;
+    sh:targetClass daimo:ReproducibilityArtifact ;
+    sh:property
+        pionera-sh:artifactKindProperty,
+        pionera-sh:artifactLocationProperty,
+        pionera-sh:artifactChecksumProperty
+.
+
+###############
+# PropertyShapes
+###############
+
+pionera-sh:creatorProperty
+    a sh:PropertyShape ;
+    rdfs:label "creator" ;
+    sh:name "creator" ;
+    sh:path dcterms:creator ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:BlankNodeOrIRI ;
+    sh:class foaf:Agent
+.
+
+pionera-sh:versionProperty
+    a sh:PropertyShape ;
+    rdfs:label "version" ;
+    sh:name "version" ;
+    sh:path dcat:version ;
+    sh:minCount 1 ;
+    sh:datatype xsd:string
+.
+
+pionera-sh:taskProperty
+    a sh:PropertyShape ;
+    rdfs:label "task" ;
+    sh:name "task" ;
+    sh:path daimo:task ;
+    sh:minCount 1 ;
+    sh:datatype xsd:string
+.
+
+pionera-sh:applicationDomainProperty
+    a sh:PropertyShape ;
+    rdfs:label "application domain" ;
+    sh:name "application domain" ;
+    sh:path daimo:applicationDomain ;
+    sh:minCount 1 ;
+    sh:datatype xsd:string
+.
+
+pionera-sh:artifactChecksumProperty
+    a sh:PropertyShape ;
+    rdfs:label "artifact checksum" ;
+    sh:name "artifact checksum" ;
+    sh:path daimo:artifactChecksum ;
+    sh:minCount 1 ;
+    sh:datatype xsd:string
+.
+
+pionera-sh:artifactKindProperty
+    a sh:PropertyShape ;
+    rdfs:label "artifact kind" ;
+    sh:name "artifact kind" ;
+    sh:path daimo:artifactKind ;
+    sh:minCount 1 ;
+    sh:datatype xsd:string
+.
+
+pionera-sh:artifactLocationProperty
+    a sh:PropertyShape ;
+    rdfs:label "artifact location" ;
+    sh:name "artifact location" ;
+    sh:path daimo:artifactLocation ;
+    sh:minCount 1 ;
+    sh:datatype xsd:anyURI
+.
+
+pionera-sh:distributionProperty
+    a sh:PropertyShape ;
+    rdfs:label "distribution" ;
+    sh:name "distribution" ;
+    sh:path dcat:distribution ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:BlankNodeOrIRI ;
+    sh:class dcat:Distribution
+.
+
+pionera-sh:accessServiceProperty
+    a sh:PropertyShape ;
+    rdfs:label "access service" ;
+    sh:name "access service" ;
+    sh:path dcat:accessService ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:BlankNodeOrIRI ;
+    sh:class dcat:DataService
+.
+
+pionera-sh:servesDatasetProperty
+    a sh:PropertyShape ;
+    rdfs:label "serves dataset" ;
+    sh:name "serves dataset" ;
+    sh:path dcat:servesDataset ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:BlankNodeOrIRI ;
+    sh:class dcat:Dataset
+.
+
+pionera-sh:serviceEndpointProperty
+    a sh:PropertyShape ;
+    rdfs:label "service endpoint" ;
+    sh:name "service endpoint" ;
+    sh:path daimo:serviceEndpoint ;
+    sh:minCount 1 ;
+    sh:datatype xsd:anyURI
+.
+
+pionera-sh:hasPolicyProperty
+    a sh:PropertyShape ;
+    rdfs:label "has policy" ;
+    sh:name "has policy" ;
+    sh:path odrl:hasPolicy ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:BlankNodeOrIRI
+    # sin sh:class porque en la ontología tiene varios rangos (Offer, Agreement)
+.
+
+pionera-sh:licenseProperty
+    a sh:PropertyShape ;
+    rdfs:label "license" ;
+    sh:name "license" ;
+    sh:path dcterms:license ;
+    sh:minCount 1 ;
+    sh:datatype xsd:string
+.
+
+pionera-sh:hasIOContractProperty
+    a sh:PropertyShape ;
+    rdfs:label "has IO contract" ;
+    sh:name "has IO contract" ;
+    sh:path daimo:hasIOContract ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:BlankNodeOrIRI ;
+    sh:class daimo:IOContract
+.
+
+pionera-sh:hasImplementationProperty
+    a sh:PropertyShape ;
+    rdfs:label "has implementation" ;
+    sh:name "has implementation" ;
+    sh:path daimo:hasImplementation ;
+    sh:nodeKind sh:BlankNodeOrIRI ;
+    sh:class mls:Implementation
+.
+
+pionera-sh:hasEvaluationProperty
+    a sh:PropertyShape ;
+    rdfs:label "has evaluation" ;
+    sh:name "has evaluation" ;
+    sh:path daimo:hasEvaluation ;
+    sh:nodeKind sh:BlankNodeOrIRI ;
+    sh:class mls:ModelEvaluation
+.
+
+pionera-sh:wasDerivedFromProperty
+    a sh:PropertyShape ;
+    rdfs:label "was derived from" ;
+    sh:name "was derived from" ;
+    sh:path prov:wasDerivedFrom ;
+    sh:nodeKind sh:BlankNodeOrIRI ;
+    sh:class daimo:Model
+.
+
+pionera-sh:executesProperty
+    a sh:PropertyShape ;
+    rdfs:label "executes" ;
+    sh:name "executes" ;
+    sh:path mls:executes ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:BlankNodeOrIRI ;
+    sh:class mls:Implementation
+.
+
+pionera-sh:endedAtTimeProperty
+    a sh:PropertyShape ;
+    rdfs:label "ended at time" ;
+    sh:name "ended at time" ;
+    sh:path prov:endedAtTime ;
+    sh:minCount 1 ;
+    sh:datatype xsd:dateTime
+.
+
+pionera-sh:inputFormatProperty
+    a sh:PropertyShape ;
+    rdfs:label "input format" ;
+    sh:name "input format" ;
+    sh:path daimo:inputFormat ;
+    sh:minCount 1 ;
+    sh:datatype xsd:string
+.
+
+pionera-sh:outputFormatProperty
+    a sh:PropertyShape ;
+    rdfs:label "output format" ;
+    sh:name "output format" ;
+    sh:path daimo:outputFormat ;
+    sh:minCount 1 ;
+    sh:datatype xsd:string
+.
+
+pionera-sh:authenticationMethodProperty
+    a sh:PropertyShape ;
+    rdfs:label "authentication method" ;
+    sh:name "authentication method" ;
+    sh:path daimo:authenticationMethod ;
+    sh:minCount 1 ;
+    sh:datatype xsd:string
+.
+
+pionera-sh:hasRuntimeProfileProperty
+    a sh:PropertyShape ;
+    rdfs:label "has runtime profile" ;
+    sh:name "has runtime profile" ;
+    sh:path daimo:hasRuntimeProfile ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:BlankNodeOrIRI ;
+    sh:class daimo:RuntimeProfile
+.
+
+pionera-sh:hasOutputProperty
+    a sh:PropertyShape ;
+    rdfs:label "has output" ;
+    sh:name "has output" ;
+    sh:path mls:hasOutput ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:BlankNodeOrIRI
+    # sin sh:class porque en la ontología tiene varios rangos (Model, ModelEvaluation)
+.
+
+pionera-sh:realizesProperty
+    a sh:PropertyShape ;
+    rdfs:label "realizes" ;
+    sh:name "realizes" ;
+    sh:path mls:realizes ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:BlankNodeOrIRI ;
+    sh:class mls:Algorithm
+.
+
+pionera-sh:hasHyperParameterProperty
+    a sh:PropertyShape ;
+    rdfs:label "has hyper-parameter" ;
+    sh:name "has hyper-parameter" ;
+    sh:path mls:hasHyperParameter ;
+    sh:nodeKind sh:BlankNodeOrIRI ;
+    sh:class mls:HyperParameter
+.
+
+pionera-sh:hasPartProperty
+    a sh:PropertyShape ;
+    rdfs:label "has part" ;
+    sh:name "has part" ;
+    sh:path mls:hasPart ;
+    sh:nodeKind sh:BlankNodeOrIRI
+    # sin sh:class porque en la ontología apunta a EvaluationMeasure,
+    # EvaluationSpecification y sd:Software
+.
+
+pionera-sh:implementsProperty
+    a sh:PropertyShape ;
+    rdfs:label "implements" ;
+    sh:name "implements" ;
+    sh:path mls:implements ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:BlankNodeOrIRI ;
+    sh:class mls:Algorithm
+.
+
+pionera-sh:frameworkProperty
+    a sh:PropertyShape ;
+    rdfs:label "framework" ;
+    sh:name "framework" ;
+    sh:path daimo:framework ;
+    sh:minCount 1 ;
+    sh:datatype xsd:string
+.
+
+pionera-sh:hardwareRequirementProperty
+    a sh:PropertyShape ;
+    rdfs:label "hardware requirement" ;
+    sh:name "hardware requirement" ;
+    sh:path daimo:hardwareRequirement ;
+    sh:minCount 1 ;
+    sh:datatype xsd:string
+.
+
+pionera-sh:metricValueProperty
+    a sh:PropertyShape ;
+    rdfs:label "metric value" ;
+    sh:name "metric value" ;
+    sh:path daimo:metricValue ;
+    sh:minCount 1 ;
+    sh:datatype xsd:decimal
+.
+
+pionera-sh:hasQualityProperty
+    a sh:PropertyShape ;
+    rdfs:label "has quality" ;
+    sh:name "has quality" ;
+    sh:path mls:hasQuality ;
+    sh:nodeKind sh:BlankNodeOrIRI ;
+    sh:class mlso:HyperParameterCharacteristic
+.
+
+pionera-sh:specifiedByProperty
+    a sh:PropertyShape ;
+    rdfs:label "specified by" ;
+    sh:name "specified by" ;
+    sh:path mls:specifiedBy ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:BlankNodeOrIRI
+    # sin sh:class porque en la ontología se usa con dos rangos:
+    # HyperParameter y EvaluationMeasure
+.
+
+pionera-sh:hasEvaluationContextProperty
+    a sh:PropertyShape ;
+    rdfs:label "has evaluation context" ;
+    sh:name "has evaluation context" ;
+    sh:path daimo:hasEvaluationContext ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:BlankNodeOrIRI ;
+    sh:class daimo:EvaluationContext
+.
+
+pionera-sh:hasAuditArtifactProperty
+    a sh:PropertyShape ;
+    rdfs:label "has audit artifact" ;
+    sh:name "has audit artifact" ;
+    sh:path daimo:hasAuditArtifact ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:BlankNodeOrIRI ;
+    sh:class daimo:AuditArtifact
+.
+
+pionera-sh:hasReproducibilityArtifactProperty
+    a sh:PropertyShape ;
+    rdfs:label "has reproducibility artifact" ;
+    sh:name "has reproducibility artifact" ;
+    sh:path daimo:hasReproducibilityArtifact ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:BlankNodeOrIRI ;
+    sh:class daimo:ReproducibilityArtifact
+.
+
+pionera-sh:evaluationDatasetProperty
+    a sh:PropertyShape ;
+    rdfs:label "evaluation dataset" ;
+    sh:name "evaluation dataset" ;
+    sh:path daimo:evaluationDataset ;
+    sh:minCount 1 ;
+    sh:datatype xsd:string
+.
+
+pionera-sh:evaluationDatasetVersionProperty
+    a sh:PropertyShape ;
+    rdfs:label "evaluation dataset version" ;
+    sh:name "evaluation dataset version" ;
+    sh:path daimo:evaluationDatasetVersion ;
+    sh:minCount 1 ;
+    sh:datatype xsd:string
+.
+
+pionera-sh:evaluationProtocolProperty
+    a sh:PropertyShape ;
+    rdfs:label "evaluation protocol" ;
+    sh:name "evaluation protocol" ;
+    sh:path daimo:evaluationProtocol ;
+    sh:minCount 1 ;
+    sh:datatype xsd:string
+.
+
+pionera-sh:randomSeedProperty
+    a sh:PropertyShape ;
+    rdfs:label "random seed" ;
+    sh:name "random seed" ;
+    sh:path daimo:randomSeed ;
+    sh:minCount 1 ;
+    sh:datatype xsd:integer
+.
+
+pionera-sh:runIdentifierProperty
+    a sh:PropertyShape ;
+    rdfs:label "run identifier" ;
+    sh:name "run identifier" ;
+    sh:path daimo:runIdentifier ;
+    sh:minCount 1 ;
+    sh:datatype xsd:string
+.
+
+pionera-sh:runPurposeProperty
+    a sh:PropertyShape ;
+    rdfs:label "run purpose" ;
+    sh:name "run purpose" ;
+    sh:path daimo:runPurpose ;
+    sh:minCount 1 ;
+    sh:datatype xsd:string
+.
+
+pionera-sh:runStatusProperty
+    a sh:PropertyShape ;
+    rdfs:label "run status" ;
+    sh:name "run status" ;
+    sh:path daimo:runStatus ;
+    sh:minCount 1 ;
+    sh:datatype xsd:string
+.
+
+pionera-sh:startedAtTimeProperty
+    a sh:PropertyShape ;
+    rdfs:label "started at time" ;
+    sh:name "started at time" ;
+    sh:path prov:startedAtTime ;
+    sh:minCount 1 ;
+    sh:datatype xsd:dateTime
+.
+
+pionera-sh:wasAssociatedWithProperty
+    a sh:PropertyShape ;
+    rdfs:label "was associated with" ;
+    sh:name "was associated with" ;
+    sh:path prov:wasAssociatedWith ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:BlankNodeOrIRI ;
+    sh:class foaf:Agent
+.

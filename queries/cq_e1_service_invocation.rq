@@ -1,0 +1,15 @@
+PREFIX daimo: <http://purl.org/pionera/daimo#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+
+SELECT ?model ?endpoint ?authMethod ?inputFormat ?outputFormat
+WHERE {
+  ?model a daimo:Model ;
+         dcat:distribution ?distribution ;
+         daimo:hasIOContract ?contract .
+  ?distribution dcat:accessService ?service .
+  ?service daimo:serviceEndpoint ?endpoint .
+  ?contract daimo:authenticationMethod ?authMethod ;
+            daimo:inputFormat ?inputFormat ;
+            daimo:outputFormat ?outputFormat .
+}
+ORDER BY ?model

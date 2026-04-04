@@ -1,0 +1,14 @@
+PREFIX daimo: <http://purl.org/pionera/daimo#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX odrl: <http://www.w3.org/ns/odrl/2/>
+
+SELECT ?model ?license ?policyKind
+WHERE {
+  ?model a daimo:Model ;
+         dcterms:license ?license ;
+         odrl:hasPolicy ?policy .
+  ?policy a ?policyType .
+  FILTER(?policyType IN (odrl:Agreement, odrl:Offer))
+  BIND(REPLACE(STR(?policyType), "^.*[#/]", "") AS ?policyKind)
+}
+ORDER BY ?model
